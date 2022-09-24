@@ -14,6 +14,11 @@ const generateListItemNode = (data) => {
   const nameNode = clone.querySelector("p.page-paragraph");
   const titleNode = clone.querySelector("p.page-micro");
   const avatarNode = clone.querySelector(".profile-list-item-avatar");
+  
+  if (topFriend) {
+    const topFriendNode = clone.querySelector(".top-friend-flag")
+    topFriendNode.style.display = "inline-block";
+  }
 
   nameNode.innerHTML = `${name}`;
   titleNode.innerHTML = `${jobTitle} @ ${companyName}`;
@@ -37,6 +42,7 @@ const generateListItemNode = (data) => {
  * @param {object} resultsData JSON payload of results
  */
 export const generateFriendsListFromTemplate = (resultsData) => {
+
   const friendsListSection = document.querySelector(
     "#profile-friends .profile-friends-list"
   );

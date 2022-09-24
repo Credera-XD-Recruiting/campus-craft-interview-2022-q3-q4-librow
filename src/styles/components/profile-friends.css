@@ -29,6 +29,7 @@
 
 .profile-list-item .top-friend-flag {
   display: none;
+  color: #B5E484;
 }
 
 .profile-list-item .top-friend-flag + .page-paragraph {
@@ -60,3 +61,7 @@
 #profile-friends .skeleton-block {
     margin-bottom: 4px;
 }
+
+/* .top-friend-flag {
+  background-color: #E3FACC;
+} */
