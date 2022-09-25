@@ -32,6 +32,13 @@
   width: 100%;
 }
 
+.post-author-avatar p {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
 .post-author-info {
   margin-left: 24px;
 }

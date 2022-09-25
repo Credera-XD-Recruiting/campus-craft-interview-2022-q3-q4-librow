@@ -1,4 +1,5 @@
 import { removeChildNodes } from "../utils";
+import { getAvatarText } from "./helpers/avatar-text";
 
 /**
  * Function which generates a single list-item node based on a dataset
@@ -30,6 +31,9 @@ const generateListItemNode = (data) => {
     avatarImg.src = avatarSrc;
     avatarImg.setAttribute("aria-label", `${name}`);
     avatarNode.appendChild(avatarImg);
+  } else {
+    const nameSplit = name.split(" ");
+    avatarNode.appendChild(getAvatarText(nameSplit[0], nameSplit[1], false));
   }
 
   return clone;

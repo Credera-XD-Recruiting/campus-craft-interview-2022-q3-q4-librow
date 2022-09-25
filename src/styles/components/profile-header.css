@@ -22,6 +22,13 @@
   width: 100%;
 }
 
+.profile-avatar h1 {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
 .profile-info {
   flex: 1;
   padding-left: 100px;

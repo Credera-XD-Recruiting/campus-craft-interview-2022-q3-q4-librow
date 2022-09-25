@@ -1,4 +1,5 @@
 import { removeChildNodes } from "../utils";
+import { getAvatarText } from "./helpers/avatar-text";
 
 /**
  * Function which generates a single Card node based on a dataset
@@ -42,6 +43,8 @@ const generateCardNode = (data) => {
       `${authorFirstName} ${authorLastName}`
     );
     avatarNode.appendChild(avatarImg);
+  } else {
+    avatarNode.appendChild(getAvatarText(authorFirstName, authorLastName, false));
   }
 
   return clone;
