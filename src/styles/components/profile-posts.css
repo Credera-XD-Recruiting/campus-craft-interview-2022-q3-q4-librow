@@ -33,12 +33,27 @@
 }
 
 .post-author-info {
-  width: 100%;
   margin-left: 24px;
 }
 
 .post-author-info > :first-child {
   margin-bottom: 8px;
+}
+
+.post-details {
+  text-align: right;
+}
+
+.post-details > :first-child {
+  margin-bottom: 8px;
+}
+
+.post-info {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* SKELETON LOADING */
