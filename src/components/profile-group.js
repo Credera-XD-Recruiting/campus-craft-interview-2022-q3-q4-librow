@@ -6,6 +6,13 @@ const activityStates = {
   moderate: "moderate",
   low: "low",
 };
+
+const activityColors = {
+  active: "#52C1AD",
+  inactive: "#C4C4C4",
+  moderate: "#58B1C9",
+  low: "#C152A2",
+}
 /**
  * Function which generates a single Card node based on a dataset
  *
@@ -13,7 +20,7 @@ const activityStates = {
  * @return {Node} generated markup for a card
  */
 const generateCardNode = (data) => {
-  const { name, href, image } = data;
+  const { name, href, image, activity } = data;
   const templateId = "profile-group-results-item-template";
   const resultCardTemplate = document.getElementById(templateId);
   const clone = document.importNode(resultCardTemplate.content, true);
@@ -22,6 +29,16 @@ const generateCardNode = (data) => {
   const groupImageNode = clone.querySelector(
     "a.profile-group-results-card img"
   );
+
+  if (activity === activityStates.active) {
+    referenceNode.style["background-color"] = activityColors.active;
+  } else if (activity === activityStates.moderate) {
+    referenceNode.style["background-color"] = activityColors.moderate;
+  } else if (activity === activityStates.low) {
+    referenceNode.style["background-color"] = activityColors.low;
+  } else if (activity === activityStates.inactive) {
+    referenceNode.style["background-color"] = activityColors.inactive;
+  }
 
   titleNode.innerHTML = `${name}`;
   referenceNode.href = href;
