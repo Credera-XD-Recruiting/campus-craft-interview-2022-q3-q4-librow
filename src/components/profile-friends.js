@@ -43,6 +43,21 @@ const generateListItemNode = (data) => {
  */
 export const generateFriendsListFromTemplate = (resultsData) => {
 
+  resultsData.friends.sort(
+    (a, b) => b.name.match(/\s(.+)/)[1].localeCompare(a.name.match(/\s(.+)/)[1])
+  ).reverse();
+
+  const topFriends = [];
+  const temp = resultsData.friends.slice();
+  resultsData.friends.map((friend) => {
+    if (friend.topFriend) {
+      topFriends.push(friend);
+      temp.splice(temp.indexOf(friend), 1);
+    }
+  });
+
+  resultsData.friends = [...topFriends.concat(temp)];
+
   const friendsListSection = document.querySelector(
     "#profile-friends .profile-friends-list"
   );
