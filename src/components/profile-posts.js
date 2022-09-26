@@ -28,6 +28,7 @@ const generateCardNode = (data) => {
   const avatarNode = clone.querySelector(".post-author-avatar");
   const publishDateNode = clone.querySelector(".post-details .page-xs");
   const locationNode = clone.querySelector(".post-details .page-micro");
+  const collapsibleNode = clone.querySelector(".collapsible");
 
   authorName.innerHTML = `${authorFirstName} ${authorLastName}`;
   jobDesc.innerHTML = `${jobTitle} @ ${companyName}`;
@@ -46,6 +47,18 @@ const generateCardNode = (data) => {
   } else {
     avatarNode.appendChild(getAvatarText(authorFirstName, authorLastName, false));
   }
+
+  collapsibleNode.addEventListener("click", function() {
+    this.classList.toggle("active");
+    const content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+      collapsibleNode.innerHTML = "See Post Content";
+    } else {
+      content.style.display = "block";
+      collapsibleNode.innerHTML = "Hide Post Content";
+    }
+  })
 
   return clone;
 };

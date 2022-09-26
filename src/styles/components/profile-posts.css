@@ -63,6 +63,26 @@
   justify-content: space-between;
 }
 
+.collapsible {
+  background-color: #f8f7f7;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 5px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+}
+
+.active, .collapsible:hover {
+  background-color: #eee;
+}
+
+.post-content {
+  display: none;
+  overflow: hidden;
+}
+
 /* SKELETON LOADING */
 .post-content.skeleton-block {
   height: 125px;
