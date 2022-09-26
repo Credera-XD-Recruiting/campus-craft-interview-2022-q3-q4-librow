@@ -20,7 +20,7 @@ const activityColors = {
  * @return {Node} generated markup for a card
  */
 const generateCardNode = (data) => {
-  const { name, href, image, activity } = data;
+  const { name, href, image, activity, favorite } = data;
   const templateId = "profile-group-results-item-template";
   const resultCardTemplate = document.getElementById(templateId);
   const clone = document.importNode(resultCardTemplate.content, true);
@@ -40,6 +40,12 @@ const generateCardNode = (data) => {
     referenceNode.style["background-color"] = activityColors.inactive;
   }
 
+  if (favorite) {
+    referenceNode.style["border-style"] = "solid";
+    referenceNode.style["border-color"] = "black";
+    referenceNode.style["border-width"] = "medium";
+  }
+
   titleNode.innerHTML = `${name}`;
   referenceNode.href = href;
   groupImageNode.src = image;
@@ -57,6 +63,17 @@ export const generateProfileGroupItemsFromTemplate = (resultsData) => {
   const profileGroupsList = document.querySelector(
     "#profile-groups .profile-group-results"
   );
+
+  const favGroups = [];
+  const temp = resultsData.groups.slice();
+  resultsData.groups.map((group) => {
+    if (group.favorite) {
+      favGroups.push(group);
+      temp.splice(temp.indexOf(group), 1);
+    }
+  });
+
+  resultsData.groups = [...favGroups.concat(temp)];
 
   removeChildNodes(profileGroupsList);
 
